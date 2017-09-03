@@ -26,6 +26,11 @@
                     "icon" => "erppymobile.png",
                     "description" => "A mobile friendly adaptation of Barry Martin's Hopalong Orbits Visualizer."
                 ],
+                "Grid Game" => (object) [
+                    "location" => "/gridgamejs",
+                    "icon" => "gridgame.png",
+                    "description" => "A simple game where the objective is to find a randomly selected tile within a grid."
+                ],
             ];
             foreach ($projects as $project_title => $project) { ?>
             <div class="project">
@@ -37,7 +42,7 @@
                             <p class="project-description"><?=$project->description?></p>
                         </div>
                     </a>
-                    <a class="project-source" href="<?=$github_url."/".$project->location?>" target="_blank">
+                    <a class="project-source" href="<?=$github_url.$project->location?>" target="_blank">
                         <div class="vtable">
                             <p class="vtable-content"><i class="fa fa-code"></i>View Source</p>
                         </div>
