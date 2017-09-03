@@ -52,4 +52,4 @@ if ($compile) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 
 <!--Local Resources-->
-<link rel="stylesheet" type="text/css" href="<?php echo $resource_url; ?>/css/style.css<?php echo (!$local_mode) ? "?v=".microtime(true) : ""; ?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo $resource_url; ?>css/style.css<?php echo (!$local_mode) ? "?v=".microtime(true) : ""; ?>" />
