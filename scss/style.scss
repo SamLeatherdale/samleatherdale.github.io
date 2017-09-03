@@ -1,0 +1,149 @@
+$primary_color: #4C6DFF;
+
+$secondary_color: #ff9900;
+$secondary_hover: #ff8800;
+
+$title_color: #444;
+$copy_color: #666;
+$border_color: #EBEBEB;
+$border_dark_color: #ABABAB;
+$transition_fast: 0.4s;
+
+/*Global styles*/
+body {
+    font-family: "Open Sans", sans-serif;
+    background: #fafafa;
+    color: $copy_color;
+}
+ul {
+    list-style-position: inside;
+}
+.inherit-link {
+    &, &:visited, &:hover, &:active {
+        color: inherit !important;
+        text-decoration: none;
+    }
+}
+.wrap {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+.vtable {
+    display: table;
+    table-layout: fixed;
+    height: 100%;
+}
+.vtable-content {
+    display: table-cell;
+    vertical-align: middle;
+}
+/*Header styles*/
+header {
+    background-color: white;
+}
+.header-title {
+    text-align: center;
+    padding: 60px 0 20px 0;
+    background-color: white;
+}
+#title {
+    font-size: 3em;
+    font-weight: normal;
+    margin-bottom: 25px;
+    color: $title_color;
+}
+#subtitle {
+    font-size: 1.5em;
+    font-weight: lighter;
+}
+/*Navigation styles*/
+#header_nav {
+    border: 0;
+    border-color: $border_color;
+    border-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    text-align: center;
+    
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+    
+    li, li.active {
+        display: inline-block;
+        transition: $transition_fast;
+        
+        a {
+            display: block;
+            color: $title_color;
+            padding: 20px 14px;
+        }
+        
+        &:hover {
+            background-color: $primary_color;
+            color: white;
+        }
+    }
+    
+    li.active {
+        background-color: $border_color;
+    }
+}
+/*Content styles*/
+main {
+    padding: 40px 0;
+}
+#content {
+    padding: 40px;
+    background-color: white;
+    border: 1px solid $border_color;
+}
+.project {
+    padding: 20px 0;
+}
+.project-content {
+    position: relative;
+}
+.project-main {
+    float: left;
+    width: calc(100% - 200px);
+}
+.project-source {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 100%;
+    padding-left: 20px;
+    border-left: 1px solid $border_dark_color;
+    
+    p {
+        margin-top: 10px;
+    }
+    i {
+        margin-right: 8px;
+    }
+}
+.project-icon {
+    float: left;
+    width: 64px;
+    height: 64px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.project-text {
+    float: left;
+    width: calc(100% - 64px);
+    padding-left: 25px;
+}
+/*Footer styles*/
+footer {
+    background-color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+.social-image {
+    width: 48px;
+    height: 48px;
+}
