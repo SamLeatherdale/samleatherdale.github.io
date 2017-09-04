@@ -8,7 +8,7 @@
     <main>
         <div id="content" class="wrap">
             <h2>GitHub Projects</h2>
-            <p>The following projects are hosted right here on GitHub.</p>
+            <p>The following projects are hosted right here on GitHub Pages.</p>
         <?php
             $projects = [
                 "YouTube Timeline" => (object) [
@@ -36,7 +36,7 @@
             <div class="project">
                 <div class="project-content clearfix">
                     <a class="project-main inherit-link clearfix" href="<?=$project->location?>">
-                        <div class="project-icon" style="background-image: url('<?=$resource_url.'icons/'.$project->icon?>');"></div>
+                        <div class="project-icon" style="background-image: url('<?=$resource_url.'icons/projects/'.$project->icon?>');"></div>
                         <div class="project-text">
                             <h3 class="project-title"><?=$project_title?></h3>
                             <p class="project-description"><?=$project->description?></p>
