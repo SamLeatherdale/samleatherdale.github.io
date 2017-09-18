@@ -4,7 +4,7 @@ if (empty($compile)) {
 }
 $hosted_url = "https://samleatherdale.github.io/";
 $local_url = "/samleatherdale.github.io/";
-$github_url = "https://github.com/samleatherdale";
+$github_url = "https://github.com/samleatherdale/";
 $local_mode = (!$compile && ($_SERVER["HTTP_HOST"] == "localhost"));
 $site_url = ($local_mode) ? $local_url : $hosted_url;
 $resource_url = ($local_mode) ? "/samleatherdale.github.io/" : "/";
@@ -62,10 +62,8 @@ if ($compile) {
 </script>
 <!--Hosted Resources-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" rel="stylesheet">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" />
 
 <!--Local Resources-->
-<link rel="stylesheet" type="text/css" href="<?=$resource_url?>css/style.css<?=(!$local_mode) ? "?v=".microtime(true) : ""?>" />
+<link rel="stylesheet" type="text/css" href="<?=$resource_url?>css/style.css?v=<?=microtime(true)?>" />

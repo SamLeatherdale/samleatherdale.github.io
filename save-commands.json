@@ -1,0 +1,6 @@
+{
+    "commands": [
+        "*.php : D:\\xampp\\htdocs\\samleatherdale.github.io\\compile_php.bat",
+        "scss/*.scss : sass {relPath}style.scss css{sep}style.css"
+    ]
+}
