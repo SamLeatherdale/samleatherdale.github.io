@@ -17,9 +17,15 @@ $menu_items = array(
         "location" => "about"
     ]
 );
+$page_slug = '';
+foreach ($menu_items as $item_name => $menu_item) {
+    if ($item_name == $page_name) {
+        $page_slug = $menu_item->location;
+    }
+}
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="page-<?=$page_slug?>">
 <head>
 <meta charset="utf-8">
 <?php

@@ -1,0 +1,19 @@
+$primary_color: #4C6DFF;
+
+$secondary_color: #ff9900;
+$secondary_hover: #ff8800;
+
+$title_color: #444;
+$copy_color: #666;
+$border_color: #EBEBEB;
+$border_dark_color: #ABABAB;
+$transition_fast: 0.4s;
+
+$ipad_port: 767px;
+$phone_port: 450px;
+
+@mixin media($max_width) {
+    @media screen and (max-width: $max_width) {
+        @content;
+    }
+}

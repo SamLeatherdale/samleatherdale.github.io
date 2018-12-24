@@ -1,0 +1,53 @@
+/*Header styles*/
+header {
+    background-color: white;
+}
+.header-title {
+    text-align: center;
+    padding: 60px 0 20px 0;
+    background-color: white;
+}
+#title {
+    font-size: 3em;
+    font-weight: normal;
+    margin-bottom: 25px;
+    color: $title_color;
+}
+#subtitle {
+    font-size: 1.5em;
+    font-weight: lighter;
+}
+/*Navigation styles*/
+#header_nav {
+    border: 0;
+    border-color: $border_color;
+    border-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    text-align: center;
+
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+
+    li, li.active {
+        display: inline-block;
+        transition: $transition_fast;
+
+        a {
+            display: block;
+            color: $title_color;
+            padding: 20px 14px;
+        }
+
+        &:hover {
+            background-color: $primary_color;
+            color: white;
+        }
+    }
+
+    li.active {
+        background-color: $border_color;
+    }
+}
