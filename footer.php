@@ -19,3 +19,4 @@
         </div>
     </div>
 </footer>
+<script src="<?=$resource_url?>js/index.js?v=<?=microtime(true)?>"></script>
