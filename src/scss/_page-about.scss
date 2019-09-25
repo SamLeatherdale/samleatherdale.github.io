@@ -1,8 +1,10 @@
-.page-about {
-    section {
-        margin: 24px 0;
+#markdown-content {
+    h1 {
+        font-size: 30px;
+        margin: 20px 0;
     }
     iframe {
+        margin: 12px 0;
         max-width: 100%;
     }
 }
