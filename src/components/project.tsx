@@ -28,7 +28,7 @@ const Project = (props: ProjectProps) => {
                     </div>
                 </a>
             </div>
-            <a className="project-text inherit-link" href={sourceUrl}>
+            <a className="project-text inherit-link" href={liveUrl}>
                 <h3 className="project-title">
                     {title}
                     {isMobile && <i className="project-responsive fa fa-mobile"></i>}
