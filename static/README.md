@@ -1,0 +1,2 @@
+# samleatherdale.github.io - Powered by Gatsby
+Thanks for checking out my website source code. You're looking at the master branch, which is where the compiled output from Gatsby is stored in order to host on GitHub Pages. If you want to check out the original source, switch over to the `gatsby` branch.
