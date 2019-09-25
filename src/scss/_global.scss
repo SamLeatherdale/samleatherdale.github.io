@@ -1,9 +1,37 @@
-/*Global styles*/
+//Page layout
+html, body, #wrap, #___gatsby, #gatsby-focus-wrapper {
+    min-height: 100%;
+    height: 100%;
+}
 body {
     font-family: "Open Sans", sans-serif;
     background: #fafafa;
     color: $copy-color;
 }
+#wrap {
+    display: flex;
+    flex-direction: column;
+
+    header, footer {
+        flex-shrink: 0;
+    }
+
+    main {
+        flex-grow: 1;
+    }
+}
+#content {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: white;
+
+    @include media($ipad-port) {
+        padding: 20px;
+    }
+}
+
+//Global classes
 ul {
     list-style-position: inside;
 }
@@ -13,22 +41,8 @@ ul {
 .nounder-link {
     text-decoration: none;
 }
-.wrap {
-    max-width: 1024px;
-    margin: 0 auto;
-}
 .vflex {
     display: flex;
     align-items: center;
     height: 100%;
-}
-
-/*Content styles*/
-#content {
-    padding: 40px;
-    background-color: white;
-
-    @include media($ipad-port) {
-        padding: 20px;
-    }
 }

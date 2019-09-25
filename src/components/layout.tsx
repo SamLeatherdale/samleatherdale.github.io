@@ -31,7 +31,7 @@ const Layout = ({children, slug}: LayoutProps) => {
   `);
 
     return (
-        <div className={`page-${slug}`}>
+        <div className={`page-${slug}`} id="wrap">
             <link rel="stylesheet"
                   href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
                   integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossOrigin="anonymous"/>
