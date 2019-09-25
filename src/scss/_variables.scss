@@ -1,0 +1,29 @@
+$primary-color: #4C6DFF;
+$secondary-color: #ff9900;
+$secondary-hover: #ff8800;
+$gatsby-color: #663399;
+
+$title-color: #444;
+$copy-color: #666;
+$border-color: #EBEBEB;
+$border-dark_color: #ABABAB;
+$transition-fast: 0.4s;
+
+$ipad-port: 767px;
+$phone-port: 450px;
+
+@mixin inherit-link {
+    @include link-color(inherit);
+}
+
+@mixin link-color($color) {
+    &, &:visited, &:hover, &:active {
+        color: $color;
+    }
+}
+
+@mixin media($max-width) {
+    @media screen and (max-width: $max-width) {
+        @content;
+    }
+}

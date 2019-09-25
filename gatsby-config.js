@@ -1,8 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Sam Leatherdale`,
+    subtitle: `Programmer and Web Developer`,
+    description: `Portfolio of Sam's web development projects.`,
+    author: `Sam Leatherdale`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -36,6 +37,16 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+      `gatsby-plugin-sass`,
+    // {
+    //   resolve: `gatsby-plugin-sass`,
+    //   options: {
+    //     // Override the file regex for SASS
+    //     sassRuleTest: /\.global\.s[ac]ss$/,
+    //     // Override the file regex for CSS modules
+    //     sassRuleModulesTest: /\.module\.s[ac]ss$/,
+    //   },
+    // },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

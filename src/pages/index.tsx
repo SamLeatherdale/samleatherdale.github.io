@@ -6,10 +6,10 @@ import SEO from "../components/seo"
 import {StaticQuery, graphql} from "gatsby";
 import Project, {ProjectProps} from "../components/project";
 
-const Projects = () => {
+const Index = () => {
 
     return (
-    <Layout>
+    <Layout slug="home">
         <SEO title="Projects"/>
 
         <h2>GitHub Projects</h2>
@@ -32,12 +32,13 @@ const Projects = () => {
                 }
             `}
             render={data => {
-                return data.allProjectsJson.edges.map((edge) => <Project {...edge.node} />);
+                return data.allProjectsJson.edges.map((edge: any) => {
+                    const node: ProjectProps = edge.node;
+                    return <Project key={node.location} {...node} />
+                });
             }}
         />
-
-        <Link to="/page-2/">Go to page 2</Link>
     </Layout>
 )};
 
-export default Projects
+export default Index;

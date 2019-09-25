@@ -1,0 +1,34 @@
+/*Global styles*/
+body {
+    font-family: "Open Sans", sans-serif;
+    background: #fafafa;
+    color: $copy-color;
+}
+ul {
+    list-style-position: inside;
+}
+.inherit-link {
+    @include inherit-link;
+}
+.nounder-link {
+    text-decoration: none;
+}
+.wrap {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+.vflex {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+/*Content styles*/
+#content {
+    padding: 40px;
+    background-color: white;
+
+    @include media($ipad-port) {
+        padding: 20px;
+    }
+}

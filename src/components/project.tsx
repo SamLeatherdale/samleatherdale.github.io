@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 export interface ProjectProps {
     location: string;
@@ -10,7 +9,6 @@ export interface ProjectProps {
 }
 
 const Project = (props: ProjectProps) => {
-    console.log(props);
     const {location, title, description, icon, isMobile} = props;
     const liveUrl = `https://samleatherdale.github.io/${location}`;
     const sourceUrl = `https://github.com/SamLeatherdale/${location}`;
@@ -21,7 +19,7 @@ const Project = (props: ProjectProps) => {
             <div className="project-icon-column">
                 <a className="project-icon"
                    href={liveUrl}
-                   style={{backgroundImage: `url(icons/projects/${icon})`}}></a>
+                   style={{backgroundImage: `url(/images/projects/${icon})`}}></a>
                 <a className="project-source-mobile"
                    href={sourceUrl}
                    target="_blank">
