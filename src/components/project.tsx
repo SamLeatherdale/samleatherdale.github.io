@@ -5,11 +5,11 @@ export interface ProjectProps {
     title: string
     description: string
     icon: string
-    isMobile: string
+    isDesktopOnly: boolean
 }
 
 const Project = (props: ProjectProps) => {
-    const {location, title, description, icon, isMobile} = props;
+    const {location, title, description, icon, isDesktopOnly} = props;
     const liveUrl = `https://samleatherdale.github.io/${location}`;
     const sourceUrl = `https://github.com/SamLeatherdale/${location}`;
 
@@ -31,7 +31,7 @@ const Project = (props: ProjectProps) => {
             <a className="project-text inherit-link" href={liveUrl}>
                 <h3 className="project-title">
                     {title}
-                    {isMobile && <i className="project-responsive fas fa-mobile-alt"></i>}
+                    {!isDesktopOnly && <i className="project-responsive fas fa-mobile-alt"></i>}
                 </h3>
                 <p className="project-description">{description}</p>
             </a>

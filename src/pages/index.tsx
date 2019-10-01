@@ -25,7 +25,7 @@ const Index = () => {
                                 location
                                 icon
                                 description
-                                isMobile
+                                isDesktopOnly
                             }                        
                         }
                     }
