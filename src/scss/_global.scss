@@ -5,8 +5,14 @@ html, body, #wrap, #___gatsby, #gatsby-focus-wrapper {
 }
 body {
     font-family: "Open Sans", sans-serif;
-    background: #fafafa;
-    color: $copy-color;
+    background-color: $bg-primary;
+
+    @extend %copy-text;
+
+    @include theme-dark {
+        background-color: $bg-primary-dark;
+        color: $copy-primary-dark;
+    }
 }
 #wrap {
     display: flex;
@@ -20,11 +26,11 @@ body {
         flex-grow: 1;
     }
 }
+
 #content {
     max-width: 1024px;
     margin: 0 auto;
     padding: 40px;
-    background-color: white;
 
     @include media($ipad-port) {
         padding: 20px;
@@ -45,4 +51,12 @@ ul {
     display: flex;
     align-items: center;
     height: 100%;
+}
+
+.btn-primary-themed {
+    @include button-variant($highlight-primary, darken($highlight-primary, 10%));
+
+    @include theme-dark {
+        @include button-variant($highlight-primary-dark, darken($highlight-primary-dark, 10%));
+    }
 }

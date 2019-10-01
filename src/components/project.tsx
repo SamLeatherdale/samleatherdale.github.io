@@ -23,23 +23,23 @@ const Project = (props: ProjectProps) => {
                 <a className="project-source-mobile"
                    href={sourceUrl}
                    target="_blank">
-                    <div className="btn btn-primary">
-                        <i className="fa fa-code"></i><span className="project-source-label">View Source</span>
+                    <div className="btn btn-primary-themed">
+                        <i className="fas fa-code"></i><span className="project-source-label">View Source</span>
                     </div>
                 </a>
             </div>
             <a className="project-text inherit-link" href={liveUrl}>
                 <h3 className="project-title">
                     {title}
-                    {isMobile && <i className="project-responsive fa fa-mobile"></i>}
+                    {isMobile && <i className="project-responsive fas fa-mobile-alt"></i>}
                 </h3>
                 <p className="project-description">{description}</p>
             </a>
         </div>
         <div className="project-source">
             <div className="vflex">
-                <a className="btn btn-primary" href={sourceUrl} target="_blank">
-                    <i className="fa fa-code"></i><span className="project-source-label">View Source</span>
+                <a className="btn btn-primary-themed" href={sourceUrl} target="_blank">
+                    <i className="fas fa-code"></i><span className="project-source-label">View Source</span>
                 </a>
             </div>
         </div>

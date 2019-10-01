@@ -1,12 +1,26 @@
-$primary-color: #4C6DFF;
-$secondary-color: #ff9900;
-$secondary-hover: #ff8800;
+$allow-dark-theme: true;
+$force-dark-theme: false;
+
+$highlight-primary: #4c6dff;
+$highlight-primary-dark: #ff9900;
+//$secondary-color: #ff9900;
+//$secondary-hover: #ff8800;
 $gatsby-color: #663399;
 
-$title-color: #444;
-$copy-color: #666;
-$border-color: #EBEBEB;
-$border-dark_color: #ABABAB;
+$bg-primary: #fff;
+$bg-primary-dark: #191919;
+
+$bg-secondary: #efefef;
+$bg-secondary-dark: #252525;
+
+$title-primary: #444;
+$title-primary-dark: #ddd;
+
+$copy-primary: #666;
+$copy-primary-dark: #fff;
+
+$border-primary: #EBEBEB;
+$border-secondary: #ABABAB;
 $transition-fast: 0.4s;
 
 $ipad-port: 767px;
@@ -26,4 +40,41 @@ $phone-port: 450px;
     @media screen and (max-width: $max-width) {
         @content;
     }
+}
+
+@mixin theme-dark {
+    @if $force-dark-theme {
+        @content
+    }
+    @else if $allow-dark-theme {
+        html[data-theme='dark'] & {
+            @content;
+        }
+        /* @media (prefers-color-scheme: dark) {
+            @content;
+        } */
+    }
+}
+
+@mixin property-dark($property, $value-light, $value-dark) {
+    #{$property}: $value-light;
+
+    @include theme-dark {
+        #{$property}: $value-dark;
+    }
+}
+%bg-primary {
+    @include property-dark("background-color", $bg-primary, $bg-primary-dark);
+}
+
+%bg-secondary {
+    @include property-dark("background-color", $bg-secondary, $bg-secondary-dark);
+}
+
+%title-text {
+    @include property-dark("color", $title-primary, $title-primary-dark);
+}
+
+%copy-text {
+    @include property-dark("color", $copy-primary, $copy-primary-dark);
 }

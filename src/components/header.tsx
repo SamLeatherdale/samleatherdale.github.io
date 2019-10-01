@@ -1,5 +1,6 @@
 import { Link } from "gatsby"
 import React from "react"
+import ThemeSwitch from "./themeSwitch";
 
 export interface HeaderProps {
     title: string;
@@ -11,6 +12,7 @@ const Header = (props: HeaderProps) => {
 
     return (
     <header>
+        <ThemeSwitch />
         <div className="header-title">
             <Link className="inherit-link" to="/">
                 <h1 id="title">{title}</h1>

@@ -9,8 +9,10 @@ import React from "react"
 import PropTypes from "prop-types"
 import {useStaticQuery, graphql} from "gatsby"
 
-import Header from "./header"
+//1import "bootstrap-css-only/css/bootstrap.min.css";
+import "bootstrap/scss/bootstrap.scss";
 import "../scss/style.scss";
+import Header from "./header"
 import Footer from "./footer";
 
 interface LayoutProps {
@@ -32,15 +34,6 @@ const Layout = ({children, slug}: LayoutProps) => {
 
     return (
         <div className={`page-${slug}`} id="wrap">
-            <link rel="stylesheet"
-                  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
-                  integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossOrigin="anonymous"/>
-            <link rel="stylesheet"
-                  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-                  integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossOrigin="anonymous"/>
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" />
-
-
             <Header title={data.site.siteMetadata.title} subtitle={data.site.siteMetadata.subtitle}/>
             <main>
                 <div id="content">
