@@ -13,24 +13,35 @@ export default class ThemeSwitch extends React.Component<{}, ThemeSwitchState> {
         super(props);
 
         //Bind
-        this.switchTheme = this.switchTheme.bind(this);
         this.setTheme = this.setTheme.bind(this);
+        this.switchTheme = this.switchTheme.bind(this);
+        this.updateDOMTheme = this.updateDOMTheme.bind(this);
 
+        this.state = new ThemeSwitchState();
+    }
+
+    componentDidMount(): void {
         //Check current browser theme
         const mql = window.matchMedia("(prefers-color-scheme: dark)");
-        this.state = new ThemeSwitchState(mql.matches);
-        this.setTheme();
+        this.setTheme(mql.matches);
+        this.updateDOMTheme();
+    }
+
+    setTheme(dark: boolean) {
+        this.setState({dark: dark}, () => {
+            this.updateDOMTheme();
+        });
     }
 
     switchTheme() {
         this.setState(prevState => ({
             dark: !prevState.dark
         }), () => {
-            this.setTheme();
+            this.updateDOMTheme();
         });
     }
 
-    setTheme() {
+    updateDOMTheme() {
         const theme = this.state.dark ? "dark" : "light";
         document.documentElement.setAttribute('data-theme', theme);
     }
