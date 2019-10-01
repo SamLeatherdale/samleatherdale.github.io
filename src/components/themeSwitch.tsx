@@ -21,9 +21,13 @@ export default class ThemeSwitch extends React.Component<{}, ThemeSwitchState> {
     }
 
     componentDidMount(): void {
-        //Check current browser theme
-        const mql = window.matchMedia("(prefers-color-scheme: dark)");
-        this.setTheme(mql.matches);
+        if (sessionStorage && sessionStorage.getItem("color-scheme")) {
+            this.setTheme(sessionStorage.getItem("color-scheme") === "dark");
+        } else {
+            //Check current browser theme
+            const mql = window.matchMedia("(prefers-color-scheme: dark)");
+            this.setTheme(mql.matches);
+        }
     }
 
     setTheme(dark: boolean) {
@@ -43,6 +47,9 @@ export default class ThemeSwitch extends React.Component<{}, ThemeSwitchState> {
     updateDOMTheme() {
         const theme = this.state.dark ? "dark" : "light";
         document.documentElement.setAttribute('data-theme', theme);
+        if (sessionStorage) {
+            sessionStorage.setItem("color-scheme", theme);
+        }
     }
 
     render() {
