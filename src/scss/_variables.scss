@@ -50,9 +50,13 @@ $phone-port: 450px;
         html[data-theme='dark'] & {
             @content;
         }
-        /* @media (prefers-color-scheme: dark) {
-            @content;
-        } */
+
+        //Prevent flash of white while waiting for React
+        @media (prefers-color-scheme: dark) {
+            html:not([data-theme]) & {
+                @content;
+            }
+        }
     }
 }
 

@@ -24,7 +24,6 @@ export default class ThemeSwitch extends React.Component<{}, ThemeSwitchState> {
         //Check current browser theme
         const mql = window.matchMedia("(prefers-color-scheme: dark)");
         this.setTheme(mql.matches);
-        this.updateDOMTheme();
     }
 
     setTheme(dark: boolean) {
