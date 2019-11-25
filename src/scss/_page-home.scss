@@ -3,21 +3,60 @@
     display: flex;
 }
 .project-main {
-    display: flex;
+    display: grid;
+    grid-template-areas: "icon text button";
+    grid-template-columns: max-content 1fr max-content;
     width: 100%;
+
+    @include media($phone-port) {
+        grid-template-areas:
+                "icon text"
+                "button text";
+        grid-template-columns: max-content 1fr;
+    }
+}
+
+.project-icon-column {
+    grid-area: icon;
+    width: 64px;
+
+    .project-icon {
+        display: block;
+        width: 64px;
+        height: 64px;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+}
+.project-text {
+    grid-area: text;
+    padding-left: 25px;
+
+    .project-title {
+        display: inline-block;
+    }
+
+    .project-responsive {
+        font-size: 25px;
+        color: #bbb;
+        margin-left: 10px;
+    }
+    .project-badge {
+        font-size: 14px;
+        border-radius: 4px;
+        margin-left: 8px;
+    }
 }
 .project-source {
-    flex-shrink: 0;
+    grid-area: button;
     padding-left: 20px;
     margin-left: 10px;
     border-left: 1px solid $border-secondary;
 
-    p {
-        margin-top: 10px;
-    }
-    i {
-        margin-right: 8px;
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
 
     @include media($ipad-port) {
         width: 65px;
@@ -29,45 +68,33 @@
     }
 
     @include media($phone-port) {
-        display: none;
-    }
-}
-.project-source-label {
-    @include media($ipad-port) {
-        display: none;
-    }
-}
-.project-icon-column {
-    width: 64px;
-}
-.project-icon {
-    display: block;
-    width: 64px;
-    height: 64px;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-.project-source-mobile {
-    display: none;
-
-    @include media($phone-port) {
-        display: block;
+        //Moves over to left
         margin-top: 10px;
+        margin-left: 0;
+        padding-left: 0;
+        border: 0;
 
         .btn {
             width: 100%;
         }
     }
-}
-.project-text {
-    padding-left: 25px;
 
-    h3 {
-        display: inline-block;
+    > a {
+        $hide-label: $ipad-port;
+        margin-top: 10px;
+
+        > i {
+            margin-right: 8px;
+
+            @include media($hide-label) {
+                margin-right: 0;
+            }
+        }
+
+        .project-source-label {
+            @include media($hide-label) {
+                display: none;
+            }
+        }
     }
-}
-.project-responsive {
-    font-size: 25px;
-    color: #bbb;
-    margin-left: 10px;
 }

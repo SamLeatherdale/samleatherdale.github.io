@@ -1,42 +1,50 @@
 [
   {
+    "title": "Deus Ex Hacking Game",
+    "repo": "deusex-hackgame",
+    "liveUrl": "https://deusex.netlify.com",
+    "description": "A version of the Deus Ex hacking minigame, in React/TypeScript.",
+    "isDesktopOnly": true,
+    "isBeta": true
+  },
+  {
     "title": "Sydney Trains Car Lookup",
-    "location": "sydneytrainscarlookup",
+    "repo": "sydneytrainscarlookup",
     "icon": "sydneytrains.png",
     "description": "Search a Sydney Trains carriage number to find out the model and carriage type.",
     "isDesktopOnly": false
   },
   {
     "title": "Ultra Motherload",
-    "location": "ultramotherload",
+    "repo": "ultramotherload",
     "icon": "ultramotherload.png",
     "description": "View and modify Super Motherload map files in a simple JavaScript editor.",
     "isDesktopOnly": true
   },
   {
     "title": "YouTube Timeline",
-    "location": "youtubetimeline",
+    "repo": "youtubetimeline",
     "icon": "youtubetimeline.png",
     "description": "See the entire history of any YouTube channel without scrolling forever.",
     "isDesktopOnly": false
   },
   {
     "title": "Discord Text Generator",
-    "location": "discordtextgenerator",
+    "repo": "discordtextgenerator",
     "icon": "discordtextgenerator.png",
     "description": "Convert text to Discord's Regional Text Indicator characters, and split large messages.",
     "isDesktopOnly": false
   },
   {
     "title": "Erppy Mobile",
-    "location": "erppymobile",
+    "repo": "erppymobile",
     "icon": "erppymobile.png",
-    "description": "A mobile friendly adaptation of Barry Martin's Hopalong Orbits Visualizer.",
+    "description": "A mobile friendly fork of Barry Martin's Hopalong Orbits Visualizer.",
     "isDesktopOnly": false
   },
   {
     "title": "Grid Game",
-    "location": "gridgamejs",
+    "repo": "gridgamejs",
     "icon": "gridgame.png",
     "description": "A simple game where the objective is to find a randomly selected tile within a grid.",
     "isDesktopOnly": true

@@ -13,7 +13,7 @@ const Index = () => {
         <SEO title="Projects"/>
 
         <h2>GitHub Projects</h2>
-        <p>The following projects are hosted right here on GitHub Pages.</p>
+        <p>The following are projects I've build in my spare time, mainly to enhance my knowledge of various aspects of web development. The source code is freely available to view and modify on GitHub. I generally use the GNU GPLv3 license for my work, to ensure all modifications stay open and free.</p>
 
         <StaticQuery
             query={graphql`
@@ -22,10 +22,12 @@ const Index = () => {
                         edges {
                             node {
                                 title
-                                location
+                                repo
+                                liveUrl
                                 icon
                                 description
                                 isDesktopOnly
+                                isBeta
                             }                        
                         }
                     }
@@ -34,7 +36,7 @@ const Index = () => {
             render={data => {
                 return data.allProjectsJson.edges.map((edge: any) => {
                     const node: ProjectProps = edge.node;
-                    return <Project key={node.location} {...node} />
+                    return <Project key={node.repo} {...node} />
                 });
             }}
         />

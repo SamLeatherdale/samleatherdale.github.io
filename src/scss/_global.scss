@@ -60,3 +60,10 @@ ul {
         @include button-variant($highlight-primary-dark, darken($highlight-primary-dark, 10%));
     }
 }
+.btn-outline-themed {
+    @include button-outline-variant($highlight-primary, white);
+
+    @include theme-dark {
+        @include button-outline-variant($highlight-primary-dark, white);
+    }
+}
