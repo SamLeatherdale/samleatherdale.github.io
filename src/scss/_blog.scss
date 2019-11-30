@@ -1,0 +1,14 @@
+.blog-post {
+    .post-date {
+        display: flex;
+        align-items: center;
+
+        i {
+            margin-right: 8px;
+        }
+    }
+
+    .markdown-content {
+        margin-top: 32px;
+    }
+}

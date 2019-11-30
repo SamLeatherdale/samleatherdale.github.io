@@ -4,6 +4,8 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import {StaticQuery, graphql, Link} from "gatsby";
 import Utils from "../classes/Utils";
+import BlogPost from "../components/BlogPost";
+import {blogPostFields} from "../data/fragments"
 
 const BlogPage = ({ data }) => {
     console.log(data);
@@ -14,16 +16,12 @@ const BlogPage = ({ data }) => {
 
             <div>
                 <h4>{`${postCount} ${postCount == 1 ? "post" : "posts"}`}</h4>
-                {data.allMarkdownRemark.edges.map(({ node }) => (
-                    <article key={node.id}>
-                        <Link to={Utils.getBlogLink(node.frontmatter.path)} >
-                            <h3>{node.frontmatter.title}{" "}
-                                <span> — {node.frontmatter.date}</span>
-                            </h3>
-                        </Link>
-                        <p>{node.excerpt}</p>
-                    </article>
-                ))}
+
+                <div className="blog-posts">
+                    {data.allMarkdownRemark.edges.map(({ node }) => (
+                        <BlogPost node={node} key={node.id} isExcerpt={true} />
+                    ))}
+                </div>
             </div>
         </Layout>
     )
@@ -34,15 +32,9 @@ export const query = graphql`
     allMarkdownRemark(filter: {fileAbsolutePath: { regex: "/posts/"}}) {
       totalCount
       edges {
-        node {
-          id
-          frontmatter {
-            title
-            date(formatString: "DD MMMM, YYYY")
-            path
+          node {
+              ...blogPostFields
           }
-          excerpt
-        }
       }
     }
   }

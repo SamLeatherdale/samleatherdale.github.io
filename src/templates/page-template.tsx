@@ -13,7 +13,7 @@ export default function Template({
         <Layout slug={frontmatter.path}>
             <SEO title={frontmatter.title} />
             <div id="markdown-content"
-                dangerouslySetInnerHTML={{ __html: html }}
+                 dangerouslySetInnerHTML={{ __html: html }}
             />
         </Layout>
     )
