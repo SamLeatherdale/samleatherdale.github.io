@@ -7,10 +7,13 @@ const path = require(`path`);
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
     const { createPage } = actions;
-    const pageTemplate = path.resolve(`src/templates/pageTemplate.tsx`);
-    const result = await graphql(`
+
+    /**
+     * Create regular pages
+     */
+    const staticPagesQuery = await graphql(`
     {
-      allMarkdownRemark {
+      allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/pages/"}}) {
         edges {
           node {
             frontmatter {
@@ -23,16 +26,54 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   `);
 
     // Handle errors
-    if (result.errors) {
+    if (staticPagesQuery.errors) {
         reporter.panicOnBuild(`Error while running GraphQL query.`);
         return
     }
 
-    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    staticPagesQuery.data.allMarkdownRemark.edges.forEach(({ node }) => {
         createPage({
             path: node.frontmatter.path,
-            component: pageTemplate,
+            component: path.resolve(`src/templates/page-template.tsx`),
             context: {}, // additional data can be passed via context
+        })
+    });
+
+    /**
+     * Create blog pages
+     */
+    const blogPostsQuery = await graphql(`
+        query {
+          allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/posts/"}}) {
+            edges {
+              node {
+                frontmatter {
+                  path
+                }
+              }
+            }
+          }
+        }
+      `);
+    blogPostsQuery.data.allMarkdownRemark.edges.forEach(({ node }) => {
+        createPage({
+            path: `blog/${node.frontmatter.path}`,
+            component: path.resolve(`./src/templates/blog-post.tsx`),
+            context: {
+                // Data passed to context is available
+                // in page queries as GraphQL variables.
+                slug: node.frontmatter.path,
+            },
         })
     })
 };
+
+//Create slugs for posts
+/*
+exports.onCreateNode = ({ node, getNode }) => {
+    if (node.internal.type === `MarkdownRemark`) {
+        const fileNode = getNode(node.parent);
+        console.log(`\n`, fileNode.relativePath)
+    }
+};
+ */

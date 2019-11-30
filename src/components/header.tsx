@@ -24,6 +24,7 @@ const Header = (props: HeaderProps) => {
             <ul>
                 <NavLink title="Home" path="/" />
                 <NavLink title="About" path="/about" />
+                <NavLink title="Blog" path="/blog"/>
             </ul>
         </nav>
     </header>
