@@ -81,7 +81,7 @@ const Project = (props: ProjectProps) => {
                         <i className="project-responsive fas fa-mobile-alt"
                             title="Project is optimized for mobile devices"></i>}
                     {status &&
-                        <span className={`badge-pill project-badge project-badge-${status}`}>{status}</span>}
+                        <span className={`badge-pill project-badge project-badge-${status}`} title={`This project is currently in ${status}`}>In {status}</span>}
                 </h3>
                 <p className="project-description">{description}</p>
             </a>
