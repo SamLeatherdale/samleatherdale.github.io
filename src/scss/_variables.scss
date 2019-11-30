@@ -19,6 +19,9 @@ $title-primary-dark: #ddd;
 $copy-primary: #666;
 $copy-primary-dark: #fff;
 
+$copy-light: #999;
+$copy-light-dark: #ccc;
+
 $border-primary: #EBEBEB;
 $border-secondary: #ABABAB;
 $transition-fast: 0.4s;
@@ -81,4 +84,8 @@ $phone-port: 450px;
 
 %copy-text {
     @include property-dark("color", $copy-primary, $copy-primary-dark);
+}
+
+%copy-light {
+    @include property-dark("color", $copy-light, $copy-light-dark);
 }

@@ -55,5 +55,11 @@
     "description": "A simple game where the objective is to find a randomly selected tile within a grid.",
     "isDesktopOnly": true,
     "libraries": ["canvas"]
+  },
+  {
+    "title": "Gatsby Portfolio",
+    "repo": "samleatherdale.github.io/tree/gatsby",
+    "description": "The source code of this website.",
+    "liveUrl": ""
   }
 ]

@@ -25,7 +25,7 @@ export interface ProjectProps {
 
 const Project = (props: ProjectProps) => {
     const {repo, liveUrl, title, description, icon, isDesktopOnly, status, libraries} = props;
-    const prodUrl = liveUrl ? liveUrl : `https://samleatherdale.github.io/${repo}`;
+    const prodUrl = typeof liveUrl === "string" ? liveUrl : `https://samleatherdale.github.io/${repo}`;
     const sourceUrl = `https://github.com/SamLeatherdale/${repo}`;
     const iconUrl = icon ? `/images/projects/${icon}` : '/icons/icon-256x256.png';
     const libraryIcons = (libraries ? libraries : []).map((library) => {
@@ -54,10 +54,11 @@ const Project = (props: ProjectProps) => {
                 title = "Forked project";
                 break;
         }
+        const props = {title: title, key: library};
         if (icon.length) {
-            return <i className={icon} title={title} key={library}/>
+            return <i className={icon} {...props} />
         } else {
-            return <span title={title}>{text}</span>
+            return <span {...props}>{text}</span>
         }
     });
 
@@ -85,9 +86,9 @@ const Project = (props: ProjectProps) => {
                 <p className="project-description">{description}</p>
             </a>
             <div className="project-source">
-                <a className="btn btn-primary-themed" href={prodUrl} target="_blank">
+                {prodUrl && <a className="btn btn-primary-themed" href={prodUrl} target="_blank">
                     <i className="fas fa-external-link-alt"></i><span className="project-source-label">View Project</span>
-                </a>
+                </a>}
                 <a className="btn btn-outline-themed" href={sourceUrl} target="_blank">
                     <i className="fas fa-code"></i><span className="project-source-label">View Source</span>
                 </a>
