@@ -26,6 +26,26 @@
         height: 64px;
         background-repeat: no-repeat;
         background-size: contain;
+        border-radius: 8px;
+    }
+    .project-libraries {
+        $color: #ccc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        //margin-left: 4px;
+        margin-top: 4px;
+        padding-top: 4px;
+        border-top: 1px solid $color;
+
+        * {
+            cursor: help;
+            color: $color;
+
+            &:not(:last-child) {
+                margin-right: 4px;
+            }
+        }
     }
 }
 .project-text {
@@ -45,6 +65,13 @@
         font-size: 14px;
         border-radius: 4px;
         margin-left: 8px;
+
+        &.project-badge-alpha {
+            @include badge-variant($danger);
+        }
+        &.project-badge-beta {
+            @include badge-variant($primary);
+        }
     }
 }
 .project-source {

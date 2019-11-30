@@ -27,7 +27,8 @@ const Index = () => {
                                 icon
                                 description
                                 isDesktopOnly
-                                isBeta
+                                status
+                                libraries
                             }                        
                         }
                     }

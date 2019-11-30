@@ -1,5 +1,17 @@
 import React from "react";
 
+enum ProjectStatus {
+    BETA = "beta"
+}
+
+enum ProjectLibrary {
+    REACT = "react",
+    TYPESCRIPT = "ts",
+    CANVAS = "canvas",
+    API = "api",
+    FORK = "forked"
+}
+
 export interface ProjectProps {
     repo: string;
     liveUrl?: string;
@@ -7,14 +19,49 @@ export interface ProjectProps {
     description: string
     icon?: string
     isDesktopOnly: boolean,
-    isBeta: boolean
+    status?: ProjectStatus,
+    libraries?: ProjectLibrary[]
 }
 
 const Project = (props: ProjectProps) => {
-    const {repo, liveUrl, title, description, icon, isDesktopOnly, isBeta} = props;
+    const {repo, liveUrl, title, description, icon, isDesktopOnly, status, libraries} = props;
     const prodUrl = liveUrl ? liveUrl : `https://samleatherdale.github.io/${repo}`;
     const sourceUrl = `https://github.com/SamLeatherdale/${repo}`;
-    const iconUrl = icon ? `/icons/projects/${icon}` : '/icons/icon-256x256.png';
+    const iconUrl = icon ? `/images/projects/${icon}` : '/icons/icon-256x256.png';
+    const libraryIcons = (libraries ? libraries : []).map((library) => {
+        let icon = "";
+        let text = "";
+        let title = "";
+        switch (library) {
+            case ProjectLibrary.REACT:
+                icon = "fab fa-react";
+                title = "React";
+                break;
+            case ProjectLibrary.TYPESCRIPT:
+                text = "TS";
+                title = "TypeScript";
+                break;
+            case ProjectLibrary.CANVAS:
+                icon = "fas fa-brush";
+                title = "HTML5 Canvas";
+                break;
+            case ProjectLibrary.API:
+                icon = "fas fa-server";
+                title = "API";
+                break;
+            case ProjectLibrary.FORK:
+                icon = "fas fa-code-branch";
+                title = "Forked project";
+                break;
+        }
+        if (icon.length) {
+            return <i className={icon} title={title} key={library}/>
+        } else {
+            return <span title={title}>{text}</span>
+        }
+    });
+
+
     return (
     <div className="project">
         <div className="project-main">
@@ -22,6 +69,9 @@ const Project = (props: ProjectProps) => {
                 <a className="project-icon"
                    href={prodUrl}
                    style={{backgroundImage: `url(${iconUrl})`}}></a>
+                {!!libraryIcons.length && <div className="project-libraries">
+                    {libraryIcons}
+                </div>}
             </div>
             <a className="project-text inherit-link" href={prodUrl}>
                 <h3 className="project-title">
@@ -29,8 +79,8 @@ const Project = (props: ProjectProps) => {
                     {!isDesktopOnly &&
                         <i className="project-responsive fas fa-mobile-alt"
                             title="Project is optimized for mobile devices"></i>}
-                    {isBeta &&
-                        <span className="badge-pill badge-primary project-badge">BETA</span>}
+                    {status &&
+                        <span className={`badge-pill project-badge project-badge-${status}`}>{status}</span>}
                 </h3>
                 <p className="project-description">{description}</p>
             </a>
