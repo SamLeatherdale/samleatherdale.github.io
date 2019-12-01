@@ -9,6 +9,8 @@
     }
 
     .slick-slider {
+        overflow: hidden;
+
         div {
             display: flex;
             align-items: center;
@@ -16,6 +18,12 @@
         img {
             max-height: 300px;
             object-fit: contain;
+        }
+
+        .slick-arrow {
+            @include media($ipad-port) {
+                display: none !important;
+            }
         }
     }
 
@@ -26,6 +34,15 @@
         //Fix for Slick carousel infinite width
         min-height: 0;
         min-width: 0;
+
+        ul, ol {
+            @include media($phone-port) {
+                padding-inline-start: 8px;
+            }
+        }
+        a {
+            //word-break: break-all;
+        }
     }
 }
 
