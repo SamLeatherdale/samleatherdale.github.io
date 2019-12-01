@@ -12,15 +12,19 @@ import {useStaticQuery, graphql} from "gatsby"
 //1import "bootstrap-css-only/css/bootstrap.min.css";
 import "bootstrap/scss/bootstrap.scss";
 import "../scss/style.scss";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 import Header from "./header"
 import Footer from "./footer";
 
 interface LayoutProps {
     children: any;
-    slug: string;
+    className: string;
 }
 
-const Layout = ({children, slug}: LayoutProps) => {
+const Layout = ({children, className}: LayoutProps) => {
     const data = useStaticQuery(graphql`
     query SiteHeaderQuery {
       site {
@@ -33,7 +37,7 @@ const Layout = ({children, slug}: LayoutProps) => {
   `);
 
     return (
-        <div className={`page-${slug}`} id="wrap">
+        <div className={className} id="wrap">
             <Header title={data.site.siteMetadata.title} subtitle={data.site.siteMetadata.subtitle}/>
             <main>
                 <div id="content">

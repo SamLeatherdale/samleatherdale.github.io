@@ -4,24 +4,51 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import {StaticQuery, graphql, Link} from "gatsby";
 import Utils from "../classes/Utils";
-import BlogPost from "../components/BlogPost";
-import {blogPostFields} from "../data/fragments"
+import BlogPost, {BlogPostData} from "../components/BlogPost";
 
 const BlogPage = ({ data }) => {
     console.log(data);
-    const postCount = data.allMarkdownRemark.totalCount;
+    const postCount = data.allMdx.totalCount;
+    const posts: BlogPostData[] = data.allMdx.edges.map(edge => edge.node);
+    const months: string[] = [];
+
+    let postsReact: any[] = [];
+    let last;
+
+    for (let post of posts) {
+        const date = post.frontmatter.date;
+        let id;
+        if (date !== last) {
+            last = date;
+            id = `post-month-${Utils.makeStrKey(date)}`;
+            months.push(date);
+        }
+        postsReact.push(<BlogPost node={post} key={post.id} id={id} isExcerpt={true} />);
+    }
+
     return (
-        <Layout slug="blog">
+        <Layout className="page page-blog">
             <SEO title="Blog"/>
 
-            <div>
-                <h4>{`${postCount} ${postCount == 1 ? "post" : "posts"}`}</h4>
 
+            <div className="blog-grid">
                 <div className="blog-posts">
-                    {data.allMarkdownRemark.edges.map(({ node }) => (
-                        <BlogPost node={node} key={node.id} isExcerpt={true} />
-                    ))}
+                    <h4>{`${postCount} ${postCount == 1 ? "post" : "posts"}`}</h4>
+                    {postsReact}
                 </div>
+
+                <nav className="blog-nav">
+                    <h4>Archive</h4>
+                    <ol>
+                    {months.map(month => (
+                        <li key={month}>
+                            <a href={`#post-month-${Utils.makeStrKey(month)}`}>
+                                <i className={"fas fa-archive"} />{month}
+                            </a>
+                        </li>
+                    ))}
+                    </ol>
+                </nav>
             </div>
         </Layout>
     )
@@ -29,7 +56,9 @@ const BlogPage = ({ data }) => {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(filter: {fileAbsolutePath: { regex: "/posts/"}}) {
+    allMdx(
+        sort: { fields: [frontmatter___date], order: DESC },
+        filter: {fileAbsolutePath: { regex: "/posts/"}}) {
       totalCount
       edges {
           node {

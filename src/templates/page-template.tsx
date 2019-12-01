@@ -10,7 +10,7 @@ export default function Template({
     const { frontmatter, html } = markdownRemark;
 
     return (
-        <Layout slug={frontmatter.path}>
+        <Layout className={`page page-${frontmatter.path}`}>
             <SEO title={frontmatter.title} />
             <div id="markdown-content"
                  dangerouslySetInnerHTML={{ __html: html }}

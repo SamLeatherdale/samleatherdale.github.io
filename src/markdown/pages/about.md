@@ -5,8 +5,9 @@ title: "About"
 # About Me
 
 Hi, I'm Sam Leatherdale. 
-I'm currently studying Computer Science at Western Sydney University, and working as a web developer.
-I love working on programming and web projects in my spare time, most of which are on my [GitHub page](https://github.com/SamLeatherdale).
+
+I'm a recent graduate of the Bachelor off Computer Science at Western Sydney University, and I'm currently working as a web developer.
+I love working on programming and web projects in my spare time, most of which are showcased here on the home page, or can be found on my [GitHub page](https://github.com/SamLeatherdale).
     
 In 2015 - 2016, I was a student of the Western Sydney Institute of TAFE NSW, Australia, where I studied the Certificate IV in Programming, the Certificate IV in Web Based Technologies, and the Diploma of Information Technology. During my time at TAFE, I won the Student of the Year award for Information Technology. You can see the promo video created for the event below:
 

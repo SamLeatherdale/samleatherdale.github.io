@@ -9,7 +9,7 @@ import Project, {ProjectProps} from "../components/project";
 const Index = () => {
 
     return (
-    <Layout slug="home">
+    <Layout className="page page-home">
         <SEO title="Projects"/>
 
         <h2>GitHub Projects</h2>

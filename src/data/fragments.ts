@@ -1,7 +1,7 @@
 import {graphql} from "gatsby";
 
 export const blogPostFields = graphql`
-    fragment blogPostFields on MarkdownRemark {
+    fragment blogPostFields on Mdx {
         id
         frontmatter {
             title
@@ -9,6 +9,6 @@ export const blogPostFields = graphql`
             path
         }
         excerpt
-        html
+        body
     }
 `;

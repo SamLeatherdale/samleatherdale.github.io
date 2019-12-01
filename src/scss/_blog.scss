@@ -8,7 +8,84 @@
         }
     }
 
-    .markdown-content {
-        margin-top: 32px;
+    .slick-slider {
+        div {
+            display: flex;
+            align-items: center;
+        }
+        img {
+            max-height: 300px;
+            object-fit: contain;
+        }
     }
+
+    .post-body {
+        margin-top: 32px;
+
+
+        //Fix for Slick carousel infinite width
+        min-height: 0;
+        min-width: 0;
+    }
+}
+
+.page-blog {
+    $post-margin: 25px;
+
+    .blog-grid {
+        display: grid;
+        grid-template-columns: 1fr 150px;
+        $bp-collapse-nav: $ipad-land;
+
+        @include media($bp-collapse-nav) {
+            grid-template-columns: 1fr;
+        }
+
+        > * {
+            h4 {
+                margin-bottom: 16px;
+            }
+        }
+
+        .blog-posts {
+            //Fix for Slick carousel infinite width
+            @include fix-grid-child();
+
+            .blog-post-month {
+            }
+
+            .blog-post {
+                &:not(:last-child) {
+                    margin-bottom: $post-margin;
+                    padding-bottom: 25px;
+                    border-bottom: 1px solid $gray-400;
+                }
+            }
+        }
+
+        .blog-nav {
+            @include media($bp-collapse-nav) {
+                order: -1;
+                margin-bottom: 16px;
+            }
+
+            h3 {
+
+            }
+            ol {
+                @include list-unstyled;
+
+                li {
+                    a {
+                        @include link-color($highlight-primary);
+
+                        i {
+                            margin-right: 4px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }

@@ -1,6 +1,6 @@
-import React from "react"
+import React, {CSSProperties} from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import Utils from "../classes/Utils"
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized
@@ -13,20 +13,59 @@ import Img from "gatsby-image"
  * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-const Image = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 300) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
+interface ImageProps {
+  src: string;
+  alt: string;
+  center: boolean;
+  width?: string;
+  height?: string;
+  style?: CSSProperties
+}
 
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} />
+ export default class Image extends React.Component<ImageProps, {}> {
+   render() {
+       const props = this.props;
+       let {src, alt} = props;
+       src = "/images/posts" + Utils.prependSlash(src);
+
+       //Build styles
+       let style: CSSProperties = Object.assign({}, props.style ? props.style : {});
+
+       if (props.center) {
+           style.margin = "auto";
+           style.display = "block";
+       }
+       if (props.width) {
+           style.width = props.width;
+           style.maxWidth = "100%";
+       } if (props.height) {
+           style.height = props.height;
+       }
+
+     return (
+       <img src={src} alt={alt} style={style} />
+     )
+   }
+ }
+
+
+
+/*
+const Image = () => {
+ const data = useStaticQuery(graphql`
+   query {
+     placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
+       childImageSharp {
+         fluid(maxWidth: 300) {
+           ...GatsbyImageSharpFluid
+         }
+       }
+     }
+   }
+ `)
+
+ return <Img fluid={data.placeholderImage.childImageSharp.fluid} />
 }
 
 export default Image
+*/

@@ -44,7 +44,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
      */
     const blogPostsQuery = await graphql(`
         query {
-          allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/posts/"}}) {
+          allMdx(filter: {fileAbsolutePath: {regex: "/posts/"}}) {
             edges {
               node {
                 frontmatter {
@@ -55,7 +55,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       `);
-    blogPostsQuery.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    blogPostsQuery.data.allMdx.edges.forEach(({ node }) => {
         createPage({
             path: `blog/${node.frontmatter.path}`,
             component: path.resolve(`./src/templates/blog-post.tsx`),

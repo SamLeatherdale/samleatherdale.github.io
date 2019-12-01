@@ -26,6 +26,7 @@ $border-primary: #EBEBEB;
 $border-secondary: #ABABAB;
 $transition-fast: 0.4s;
 
+$ipad-land: 1023px;
 $ipad-port: 767px;
 $phone-port: 450px;
 
@@ -45,6 +46,25 @@ $phone-port: 450px;
     }
 }
 
+@mixin fix-grid-child {
+    //See https://stackoverflow.com/questions/43311943/prevent-content-from-expanding-grid-items
+    min-height: 0;
+    min-width: 0;
+}
+
+@mixin theme-light {
+    html[data-theme='light'] & {
+        @content;
+    }
+
+    //Prevent flash while waiting for React
+    @media (prefers-color-scheme: no-preference), (prefers-color-scheme: light) {
+        html:not([data-theme]) & {
+            @content;
+        }
+    }
+}
+
 @mixin theme-dark {
     @if $force-dark-theme {
         @content
@@ -54,7 +74,7 @@ $phone-port: 450px;
             @content;
         }
 
-        //Prevent flash of white while waiting for React
+        //Prevent flash while waiting for React
         @media (prefers-color-scheme: dark) {
             html:not([data-theme]) & {
                 @content;
