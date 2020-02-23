@@ -1,5 +1,14 @@
 [
   {
+    "title": "TrainBoard",
+    "repo": "TrainBoard",
+    "liveUrl": "https://trainboard.netlify.com",
+    "icon": "trainboard.png",
+    "description": "Show train departure information on the big screen",
+    "isDesktopOnly": true,
+    "libraries": ["react", "ts", "api"]
+  },
+  {
     "title": "Deus Ex Hacking Game",
     "repo": "deusex-hackgame",
     "liveUrl": "https://deusex.netlify.com",
