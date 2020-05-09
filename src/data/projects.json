@@ -2,16 +2,16 @@
   {
     "title": "TrainBoard",
     "repo": "TrainBoard",
-    "liveUrl": "https://trainboard.netlify.com",
+    "liveUrl": "https://trainboard.netlify.app",
     "icon": "trainboard.png",
-    "description": "Show train departure information on the big screen",
+    "description": "Show train departure information on the big screen.",
     "isDesktopOnly": true,
     "libraries": ["react", "ts", "api"]
   },
   {
     "title": "Deus Ex Hacking Game",
     "repo": "deusex-hackgame",
-    "liveUrl": "https://deusex.netlify.com",
+    "liveUrl": "https://deusex.netlify.app",
     "icon": "deusex.png",
     "description": "A version of the Deus Ex hacking minigame, in React/TypeScript.",
     "isDesktopOnly": true,
@@ -21,7 +21,7 @@
   {
     "title": "Nova Launcher Editor",
     "repo": "novalaunchereditor",
-    "liveUrl": "https://novaeditor.netlify.com",
+    "liveUrl": "https://novaeditor.netlify.app",
     "icon": "novaeditor.png",
     "description": "A React app to edit backup files from the Android home screen app Nova Launcher.",
     "isDesktopOnly": true,
