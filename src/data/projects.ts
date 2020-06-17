@@ -2,24 +2,34 @@ import { ProjectProps, ProjectStatus } from '../components/Project';
 import { LibraryEnum } from '../components/ProjectLibrary';
 
 import deusEx from '../images/projects/deusex.png';
+import discordTextGenerator from '../images/projects/discordtextgenerator.png';
+import erppyMobile from '../images/projects/erppymobile.png';
+import gridGame from '../images/projects/gridgame.png';
 // Icons
 import julianLeatherdale from '../images/projects/julianleatherdale.png';
 import novaEditor from '../images/projects/novaeditor.png';
 import sydneyTrains from '../images/projects/sydneytrains.png';
+import trainBoard from '../images/projects/trainboard.png';
 import ultraMotherload from '../images/projects/ultramotherload.png';
 import youtubeTimeline from '../images/projects/youtubetimeline.png';
-import discordTextGenerator from '../images/projects/discordtextgenerator.png';
-import erppyMobile from '../images/projects/erppymobile.png';
-import gridGame from '../images/projects/gridgame.png';
 
 const projects: ProjectProps[] = [
   {
-    'title': 'JulianLeatherdale.com',
+    'title': 'Julian Leatherdale',
     'liveUrl': 'https://julianleatherdale.com',
     'icon': julianLeatherdale,
     'description': 'Author website for Julian Leatherdale, using a custom made Gatsby theme.',
     'isDesktopOnly': false,
     'libraries': [LibraryEnum.TYPESCRIPT],
+  },
+  {
+    'title': 'TrainBoard',
+    'repo': 'TrainBoard',
+    'liveUrl': 'https://trainboard.netlify.app',
+    'icon': trainBoard,
+    'description': 'Show train departure information on the big screen.',
+    'isDesktopOnly': true,
+    'libraries': [LibraryEnum.REACT, LibraryEnum.TYPESCRIPT, LibraryEnum.API]
   },
   {
     'title': 'Deus Ex Hacking Game',
