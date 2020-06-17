@@ -10,7 +10,7 @@
     "@types/react-slick": "^0.23.4",
     "bootstrap": "^4.3.1",
     "bootstrap-css-only": "^4.3.1",
-    "gatsby": "^2.15.22",
+    "gatsby": "^2.23.3",
     "gatsby-image": "^2.2.21",
     "gatsby-plugin-manifest": "^2.2.18",
     "gatsby-plugin-mdx": "^1.0.58",
@@ -29,22 +29,25 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-helmet": "^5.2.1",
+    "react-icons": "^3.10.0",
     "react-slick": "^0.25.2",
-    "slick-carousel": "^1.8.1",
-    "typescript": "^3.6.3"
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
-    "gh-pages": "^2.1.1",
-    "prettier": "^1.18.2"
+    "gh-pages": "^2.2.0",
+    "eslint": "^7.2.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.4",
+    "typescript": "^3.6.3"
   },
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "format": "eslint --fix",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \"",
     "type-check": "tsc --noEmit",
     "deploy": "gatsby build && gh-pages -d public -b master"
   },

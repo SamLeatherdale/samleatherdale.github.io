@@ -5,27 +5,27 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import {useStaticQuery, graphql} from "gatsby"
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useStaticQuery, graphql } from 'gatsby';
 
 //1import "bootstrap-css-only/css/bootstrap.min.css";
-import "bootstrap/scss/bootstrap.scss";
-import "../scss/style.scss";
+import 'bootstrap/scss/bootstrap.scss';
+import '../scss/style.scss';
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
-import Header from "./header"
-import Footer from "./footer";
+import Header from './header';
+import Footer from './footer';
 
 interface LayoutProps {
     children: any;
     className: string;
 }
 
-const Layout = ({children, className}: LayoutProps) => {
-    const data = useStaticQuery(graphql`
+const Layout = ({ children, className }: LayoutProps) => {
+  const data = useStaticQuery(graphql`
     query SiteHeaderQuery {
       site {
         siteMetadata {
@@ -36,17 +36,17 @@ const Layout = ({children, className}: LayoutProps) => {
     }
   `);
 
-    return (
-        <div className={className} id="wrap">
-            <Header title={data.site.siteMetadata.title} subtitle={data.site.siteMetadata.subtitle}/>
-            <main>
-                <div id="content">
-                    {children}
-                </div>
-            </main>
-            <Footer/>
+  return (
+    <div className={className} id="wrap">
+      <Header title={data.site.siteMetadata.title} subtitle={data.site.siteMetadata.subtitle}/>
+      <main>
+        <div id="content">
+          {children}
         </div>
-    )
+      </main>
+      <Footer/>
+    </div>
+  );
 };
 
-export default Layout
+export default Layout;

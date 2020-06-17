@@ -11,7 +11,7 @@
     @include media($phone-port) {
         grid-template-areas:
                 "icon text"
-                "button text";
+                "button button";
         grid-template-columns: max-content 1fr;
     }
 }
@@ -98,6 +98,9 @@
 
     @include media($phone-port) {
         //Moves over to left
+        display: flex;
+        flex-direction: row;
+        width: 100%;
         margin-top: 10px;
         margin-left: 0;
         padding-left: 0;
@@ -105,11 +108,16 @@
 
         .btn {
             width: 100%;
+
+          + .btn {
+            margin-left: 16px;
+          }
         }
     }
 
     > a {
         $hide-label: $ipad-port;
+        $reshow-label: $phone-port;
         margin-top: 10px;
 
         > i {
@@ -118,11 +126,17 @@
             @include media($hide-label) {
                 margin-right: 0;
             }
+            @include media($reshow-label) {
+                margin-right: 8px;
+            }
         }
 
         .project-source-label {
             @include media($hide-label) {
                 display: none;
+            }
+            @include media($reshow-label) {
+                display: inline-block;
             }
         }
     }
