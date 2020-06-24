@@ -1,4 +1,7 @@
 import React from 'react';
+import { FaMoon, FaSun } from 'react-icons/all';
+import styled, { css } from 'styled-components';
+import { ThemeContext, ThemeContextType, ThemeContextValue, themeDark, themeLight } from '../styles/theme';
 
 class ThemeSwitchState {
     dark: boolean;
@@ -9,6 +12,8 @@ class ThemeSwitchState {
 }
 
 export default class ThemeSwitch extends React.Component<{}, ThemeSwitchState> {
+  context!: ThemeContextValue;
+  
   constructor(props) {
     super(props);
 
@@ -32,7 +37,7 @@ export default class ThemeSwitch extends React.Component<{}, ThemeSwitchState> {
 
   setTheme(dark: boolean) {
     this.setState({ dark: dark }, () => {
-      this.updateDOMTheme();
+      this.updateExternal();
     });
   }
 
@@ -40,8 +45,13 @@ export default class ThemeSwitch extends React.Component<{}, ThemeSwitchState> {
     this.setState(prevState => ({
       dark: !prevState.dark
     }), () => {
-      this.updateDOMTheme();
+      this.updateExternal();
     });
+  }
+
+  updateExternal() {
+    this.updateDOMTheme();
+    this.updateParentComponent();
   }
 
   updateDOMTheme() {
@@ -52,11 +62,23 @@ export default class ThemeSwitch extends React.Component<{}, ThemeSwitchState> {
     }
   }
 
+  updateParentComponent() {
+    this.context.updateTheme(this.state.dark ? themeDark : themeLight);
+  }
+
   render() {
-    return (
-      <i className={['theme-switch', 'far', this.state.dark ? 'fa-moon' : 'fa-sun'].join(' ')}
-        onClick={this.switchTheme}
-      ></i>
-    );
+    const Component = this.state.dark ? FaMoon : FaSun;
+    const StyledComponent = styled(Component)`
+      ${ThemeSwitcherStyles}
+    `;
+    return <StyledComponent onClick={this.switchTheme} />;
   }
 }
+ThemeSwitch.contextType = ThemeContext;
+
+const ThemeSwitcherStyles = css`
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 20px;
+`;

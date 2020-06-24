@@ -20,7 +20,7 @@ const projects: ProjectProps[] = [
     'icon': julianLeatherdale,
     'description': 'Author website for Julian Leatherdale, using a custom made Gatsby theme.',
     'isDesktopOnly': false,
-    'libraries': [LibraryEnum.TYPESCRIPT],
+    'libraries': [LibraryEnum.REACT, LibraryEnum.TYPESCRIPT, LibraryEnum.GATSBY],
   },
   {
     'title': 'TrainBoard',

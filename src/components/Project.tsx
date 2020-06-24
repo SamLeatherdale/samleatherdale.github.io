@@ -1,5 +1,9 @@
 import React from 'react';
+import { FaCode, FaExternalLinkAlt } from 'react-icons/all';
+import styled from 'styled-components';
 import ProjectLibrary, { LibraryEnum } from './ProjectLibrary';
+import AutoLink from './shared/AutoLink';
+import Button, { IconButton } from './shared/Button';
 
 export enum ProjectStatus {
     ALPHA = 'alpha',
@@ -36,7 +40,7 @@ const Project = (props: ProjectProps) => {
             {libraryIcons}
           </div>}
         </div>
-        <a className="project-text inherit-link" href={prodUrl}>
+        <AutoLink className="project-text inherit-link" href={prodUrl}>
           <h3 className="project-title">
             {title}
             {!isDesktopOnly &&
@@ -46,18 +50,24 @@ const Project = (props: ProjectProps) => {
                         <span className={`badge-pill project-badge project-badge-${status}`} title={`This project is currently in ${status}`}>In {status}</span>}
           </h3>
           <p className="project-description">{description}</p>
-        </a>
+        </AutoLink>
         <div className="project-source">
-          {prodUrl && <a className="btn btn-primary-themed" href={prodUrl} target="_blank" rel="noopener noreferrer">
-            <i className="fas fa-external-link-alt"></i><span className="project-source-label">View project</span>
-          </a>}
+          {prodUrl &&
+            <IconButton href={prodUrl} newTab>
+              <FaExternalLinkAlt /><span className="project-source-label">View project</span>
+            </IconButton>
+          }
           {sourceUrl &&
-            <a className="btn btn-outline-themed" href={sourceUrl} target="_blank" rel="noopener noreferrer">
-              <i className="fas fa-code"></i><span className="project-source-label">View source</span>
-            </a>
+            <IconButton href={sourceUrl} newTab outline>
+              <FaCode /><span className="project-source-label">View source</span>
+            </IconButton>
           }
         </div>
       </div>
     </div>
   );};
 export default Project;
+
+const ProjectSourceLabel = styled.span`
+
+`;

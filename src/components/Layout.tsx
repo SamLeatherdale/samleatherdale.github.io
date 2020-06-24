@@ -5,26 +5,29 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode, useState } from 'react';
+import { ThemeProvider } from 'styled-components';
 import { useStaticQuery, graphql } from 'gatsby';
 
-//1import "bootstrap-css-only/css/bootstrap.min.css";
-import 'bootstrap/scss/bootstrap.scss';
 import '../scss/style.scss';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { ThemeContext, ThemeContextValue, themeLight } from '../styles/theme';
 
-import Header from './header';
-import Footer from './footer';
+import Header from './Header';
+import Footer from './Footer';
 
 interface LayoutProps {
-    children: any;
+    children: ReactNode;
     className: string;
 }
 
 const Layout = ({ children, className }: LayoutProps) => {
+  const [theme, updateTheme] = useState(themeLight);
+
+  const themeValue: ThemeContextValue = { updateTheme };
+
   const data = useStaticQuery(graphql`
     query SiteHeaderQuery {
       site {
@@ -37,15 +40,19 @@ const Layout = ({ children, className }: LayoutProps) => {
   `);
 
   return (
-    <div className={className} id="wrap">
-      <Header title={data.site.siteMetadata.title} subtitle={data.site.siteMetadata.subtitle}/>
-      <main>
-        <div id="content">
-          {children}
+    <ThemeContext.Provider value={themeValue}>
+      <ThemeProvider theme={theme}>
+        <div className={className} id="wrap">
+          <Header title={data.site.siteMetadata.title} subtitle={data.site.siteMetadata.subtitle}/>
+          <main>
+            <div id="content">
+              {children}
+            </div>
+          </main>
+          <Footer/>
         </div>
-      </main>
-      <Footer/>
-    </div>
+      </ThemeProvider>
+    </ThemeContext.Provider>
   );
 };
 
