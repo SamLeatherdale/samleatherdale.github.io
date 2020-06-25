@@ -76,6 +76,8 @@ function SEO({ description, lang, meta, title }: SEOProps) {
         },
       ].concat(meta)}
     >
+      <meta name="google-site-verification" content="0NgNnS4oEaM3B9gVBRs7b13zsvUWKXs8B-ykVraGxLY" />
+
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
         integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossOrigin="anonymous"/>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" />
