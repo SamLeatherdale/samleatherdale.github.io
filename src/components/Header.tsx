@@ -47,11 +47,18 @@ const NavLink = ({ title, path }: NavLinkProps) => (
   <li>
     <StyledLink
       href={path}
-      current={window.location.pathname.toLowerCase() === path.toLowerCase()}
+      current={isCurrentPage(path)}
     >{title}
     </StyledLink>
   </li>
 );
+
+function isCurrentPage(path: string): boolean {
+  if (typeof window === 'undefined') {
+    return false;
+  }
+  return window.location.pathname.toLowerCase() === path.toLowerCase();
+}
 
 export default Header;
 
