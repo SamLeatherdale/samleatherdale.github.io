@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
-
 module.exports = {
   siteMetadata: {
     title: 'Sam Leatherdale',
@@ -74,6 +72,7 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-plugin-sass',
+    'gatsby-plugin-styled-components',
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
