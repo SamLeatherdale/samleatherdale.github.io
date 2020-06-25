@@ -1,5 +1,6 @@
 import React  from 'react';
 import { FaBrush, FaCodeBranch, FaReact, FaServer, RiGatsbyLine } from 'react-icons/all';
+import styled from 'styled-components';
 
 export enum LibraryEnum {
     REACT = 'react',
@@ -46,5 +47,10 @@ export default function ProjectLibrary({ library }: { library: LibraryEnum }): J
     return <Icon {...props} />;
   }
 
-  return <span {...props}>{text}</span>;
+  return <IconText {...props}>{text}</IconText>;
 }
+
+const IconText = styled.span`
+  cursor: default;
+  user-select: none;
+`;
