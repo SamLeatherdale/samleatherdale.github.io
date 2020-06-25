@@ -1,34 +1,64 @@
 import { Link } from 'gatsby';
 import React from 'react';
+import { RiGatsbyLine } from 'react-icons/all';
+import styled from 'styled-components';
 
-import IconLinkedIn from '../images/social/linkedin-dreamstale.png';
-import IconGitHub from '../images/social/github-dreamstale.png';
-import IconStackOverflow from '../images/social/stackoverflow-dreamstale.png';
-
-export interface HeaderProps {
-    title: string;
-    subtitle: string;
-}
+import socials from '../data/socials';
+import media from '../styles/media';
+import { linkColor, spaceX } from '../styles/mixins';
+import { StyleProps } from '../styles/theme';
+import AutoLink from './shared/AutoLink';
+import { UList } from './shared/List';
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="container">
-        <div>Sam Leatherdale</div>
-        <div className="social-icons">
-          <a href="https://www.linkedin.com/in/samleatherdale/" target="_blank">
-            <img className="social-image" alt="LinkedIn" src={IconLinkedIn} />
-          </a>
-          <a href="https://github.com/SamLeatherdale" target="_blank">
-            <img className="social-image" alt="GitHub" src={IconGitHub} />
-          </a>
-          <a href="http://stackoverflow.com/users/5157460/sam-leatherdale?tab=profile" target="_blank">
-            <img className="social-image" alt="StackOverflow" src={IconStackOverflow} />
-          </a>
-        </div>
-        <a className="gatsby-link" href="https://www.gatsbyjs.org" target="_blank">Created with Gatsby.js</a>
-      </div>
-    </footer>
+    <Root>
+      <div>Sam Leatherdale</div>
+      <SocialList>
+        {
+          socials.map(social => (
+            <li key={social.title}>
+              <AutoLink href={social.link} newTab>
+                <SocialIcon src={social.icon} alt={social.title} />
+              </AutoLink>
+            </li>
+          ))
+        }
+      </SocialList>
+      <GatsbyLink href="https://gatsbyjs.org" newTab>
+        Created with <RiGatsbyLine />
+      </GatsbyLink>
+    </Root>
   );};
 
 export default Footer;
+
+const Root = styled.footer`
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  align-items: center;
+  justify-content: center;
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  
+  @media (${media.min.tablet}) {
+    grid-gap: 24px;
+  }
+  
+  @media (${media.max.tablet}) {
+    flex-direction: column;
+  }
+`;
+const SocialList = styled(UList)`
+  display: flex;
+  ${spaceX('16px')};
+`;
+const SocialIcon = styled.img`
+  width: 48px;
+  height: 48px;
+`;
+const GatsbyLink = styled(AutoLink)`
+  ${(p: StyleProps) => linkColor(p.theme.colors.gatsby)};
+`;

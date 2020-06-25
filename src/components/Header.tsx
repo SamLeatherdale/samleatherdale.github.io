@@ -1,6 +1,11 @@
-import { Link } from 'gatsby';
 import React from 'react';
-import ThemeSwitch from './themeSwitch';
+import styled, { css } from 'styled-components';
+import media from '../styles/media';
+import { linkColor } from '../styles/mixins';
+import { StyleProps } from '../styles/theme';
+import AutoLink from './shared/AutoLink';
+import { UList } from './shared/List';
+import ThemeSwitch from './ThemeSwitch';
 
 export interface HeaderProps {
     title: string;
@@ -13,22 +18,25 @@ const Header = (props: HeaderProps) => {
   return (
     <header>
       <ThemeSwitch />
-      <div className="header-title">
-        <Link className="inherit-link" to="/">
-          <h1 id="title">{title}</h1>
-        </Link>
-        <h2 id="subtitle">{subtitle}</h2>
-      </div>
+      <TitleBox>
+        <AutoLink href="/" inherit>
+          <Title>{title}</Title>
+        </AutoLink>
+        <Subtitle>{subtitle}</Subtitle>
+      </TitleBox>
 
-      <nav id="header_nav">
-        <ul>
+      <Nav>
+        <NavList>
           <NavLink title="Home" path="/" />
           <NavLink title="About" path="/about" />
           <NavLink title="Blog" path="/blog"/>
-        </ul>
-      </nav>
+        </NavList>
+      </Nav>
     </header>
-  );};
+  );
+};
+
+
 
 interface NavLinkProps {
     title: string;
@@ -36,7 +44,65 @@ interface NavLinkProps {
 }
 
 const NavLink = ({ title, path }: NavLinkProps) => (
-  <li><Link to={path}>{title}</Link></li>
+  <li>
+    <StyledLink
+      href={path}
+      current={window.location.pathname.toLowerCase() === path.toLowerCase()}
+    >{title}
+    </StyledLink>
+  </li>
 );
 
 export default Header;
+
+// Title
+const TitleBox = styled.div`
+  text-align: center;
+  padding: 60px 0 20px 0;
+
+  @media (${media.max.mobileL}) {
+    // padding-top: 20px;
+  }
+`;
+const Title = styled.h1`
+  color: ${(p: StyleProps) => p.theme.colors.titlePrimary};
+  font-size: 3em;
+  font-weight: normal;
+  margin-bottom: 25px;
+`;
+const Subtitle = styled.h2`
+  font-size: 1.5em;
+  font-weight: lighter;
+`;
+
+// Nav
+const Nav = styled.nav`
+  border: 1px solid ${(p: StyleProps) => p.theme.colors.borderPrimary};
+  border-right-width: 0;
+  border-left-width: 0;
+`;
+const NavList = styled(UList)`
+  display: flex;
+  justify-content: center;
+`;
+
+// Nav item
+const highlightLink = css`
+  background-color: ${(p: StyleProps) => p.theme.colors.primary};
+  ${linkColor('white')};
+`;
+type LinkProps = StyleProps & {
+  current?: boolean;
+}
+const StyledLink = styled(AutoLink)`
+  display: block;
+  padding: 20px 14px;
+  transition: ${(p: LinkProps) => p.theme.transitions.fast};
+  text-decoration: none;
+  ${(p: LinkProps) => linkColor(p.theme.colors.titlePrimary)};
+  ${(p: LinkProps) => p.current && highlightLink};
+  
+  &:hover {
+    ${highlightLink}
+  }
+`;

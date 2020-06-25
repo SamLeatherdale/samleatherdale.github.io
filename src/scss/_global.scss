@@ -14,43 +14,10 @@ body {
         color: $copy-primary-dark;
     }
 }
-#wrap {
-    display: flex;
-    flex-direction: column;
-
-    header, footer {
-        flex-shrink: 0;
-    }
-
-    main {
-        flex-grow: 1;
-    }
-}
-
-#content {
-    max-width: 1024px;
-    margin: 0 auto;
-    padding: 40px;
-
-    @include media($ipad-port) {
-        padding: 20px;
-    }
-}
 
 //Global classes
 ul {
     list-style-position: inside;
-}
-.inherit-link {
-    @include inherit-link;
-}
-.nounder-link {
-    text-decoration: none;
-}
-.vflex {
-    display: flex;
-    align-items: center;
-    height: 100%;
 }
 
 //External components

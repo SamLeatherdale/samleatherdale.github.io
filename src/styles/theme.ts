@@ -42,7 +42,7 @@ export type StyleProps = {
 }
 
 const commonColors = {
-  gatsby: '#663399',
+  gatsby: '#8445c9',
   borderPrimary: '#ebebeb',
   borderSecondary: '#ababab',
   // Bootstrap
@@ -83,7 +83,7 @@ export const themeDark: DefaultTheme = {
   ...commonTheme,
   colors: {
     ...commonColors,
-    primary: '#ff9900',
+    primary: '#4c6dff',
     bgPrimary: '#191919',
     bgSecondary: '#252525',
     titlePrimary: '#ddd',

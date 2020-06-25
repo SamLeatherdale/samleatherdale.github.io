@@ -3,9 +3,6 @@ $force-dark-theme: false;
 
 $highlight-primary: #4c6dff;
 $highlight-primary-dark: #ff9900;
-//$secondary-color: #ff9900;
-//$secondary-hover: #ff8800;
-$gatsby-color: #663399;
 
 $bg-primary: #fff;
 $bg-primary-dark: #191919;
@@ -90,22 +87,7 @@ $phone-port: 450px;
         #{$property}: $value-dark;
     }
 }
-%bg-primary {
-    @include property-dark("background-color", $bg-primary, $bg-primary-dark);
-}
-
-%bg-secondary {
-    @include property-dark("background-color", $bg-secondary, $bg-secondary-dark);
-}
-
-%title-text {
-    @include property-dark("color", $title-primary, $title-primary-dark);
-}
 
 %copy-text {
     @include property-dark("color", $copy-primary, $copy-primary-dark);
-}
-
-%copy-light {
-    @include property-dark("color", $copy-light, $copy-light-dark);
 }

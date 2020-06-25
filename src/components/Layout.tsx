@@ -6,13 +6,14 @@
  */
 
 import React, { ReactNode, useState } from 'react';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import '../scss/style.scss';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import media from '../styles/media';
 import { ThemeContext, ThemeContextValue, themeLight } from '../styles/theme';
 
 import Header from './Header';
@@ -38,22 +39,44 @@ const Layout = ({ children, className }: LayoutProps) => {
       }
     }
   `);
+  const { title, subtitle } = data.site.siteMetadata;
 
   return (
     <ThemeContext.Provider value={themeValue}>
       <ThemeProvider theme={theme}>
-        <div className={className} id="wrap">
-          <Header title={data.site.siteMetadata.title} subtitle={data.site.siteMetadata.subtitle}/>
-          <main>
-            <div id="content">
+        <Wrap className={className}>
+          <Header title={title} subtitle={subtitle}/>
+          <Main>
+            <Content>
               {children}
-            </div>
-          </main>
+            </Content>
+          </Main>
           <Footer/>
-        </div>
+        </Wrap>
       </ThemeProvider>
     </ThemeContext.Provider>
   );
 };
 
 export default Layout;
+
+const Wrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  
+  > * {
+    flex-shrink: 0;
+  }
+`;
+const Main = styled.main`
+  flex: 1 1 auto;
+`;
+const Content = styled.div`
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 40px;
+
+  @media (${media.max.tablet}) {
+    padding: 20px;
+  }
+`;

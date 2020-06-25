@@ -27,12 +27,20 @@ export interface ProjectProps {
 }
 
 const Project = (props: ProjectProps) => {
-  const { repo, liveUrl, title, description, icon, isDesktopOnly, status, libraries } = props;
+  const {
+    repo,
+    liveUrl,
+    title,
+    description,
+    icon,
+    isDesktopOnly,
+    status,
+    libraries = []
+  } = props;
   const prodUrl = typeof liveUrl === 'string' ? liveUrl : `https://samleatherdale.github.io/${repo}`;
   const sourceUrl = repo ? `https://github.com/SamLeatherdale/${repo}` : '';
   const iconUrl = icon || '/icons/icon-256x256.png';
-  const libraryIcons = (libraries ? libraries : []).map(lib => <ProjectLibrary key={lib} library={lib} />);
-
+  const libraryIcons = libraries.map(lib => <ProjectLibrary key={lib} library={lib} />);
 
   return (
     <Grid>
@@ -43,7 +51,7 @@ const Project = (props: ProjectProps) => {
         {!!libraryIcons.length && <Libraries>{libraryIcons}</Libraries>}
       </Header>
       <Main>
-        <AutoLink href={prodUrl} inherit>
+        <AutoLink href={prodUrl} newTab inherit>
           <Title>
             <span>{title}</span>
             {!isDesktopOnly &&

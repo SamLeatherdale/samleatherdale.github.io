@@ -78,7 +78,7 @@ ThemeSwitch.contextType = ThemeContext;
 
 const ThemeSwitcherStyles = css`
   position: absolute;
-  top: 8px;
-  right: 8px;
-  font-size: 20px;
+  top: 16px;
+  right: 16px;
+  font-size: 30px;
 `;
