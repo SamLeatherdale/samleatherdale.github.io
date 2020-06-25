@@ -1,39 +1,49 @@
 import { Link } from 'gatsby';
+import { AnchorHTMLAttributes, ReactNode } from 'react';
 import * as React from 'react';
 import isAbsoluteUrl from 'is-absolute-url';
 import styled, { css } from 'styled-components';
 import { linkColor } from '../../styles/mixins';
 
 export type PropsType = {
-  [key: string]: unknown;
+  className?: string;
+  children?: ReactNode;
   href: string;
   newTab?: boolean;
   inherit?: boolean;
 }
 
-export default function AutoLink({ href, newTab, ...rest }: PropsType) {
+export default function AutoLink({ className, children, href, newTab, inherit }: PropsType) {
+  let linkProps: LinkStyleProps = { className, children, inherit };
   if (newTab) {
-    rest = {
+    linkProps = {
       target: '_blank',
       rel: 'noopener',
-      ...rest
+      ...linkProps
     };
   }
-  return !isAbsoluteUrl(href)
-    ? <LinkStyle to={href} {...rest} />
-    : <AnchorStyle href={href} {...rest} />;
+
+  const internal = !isAbsoluteUrl(href);
+  if (internal && !href.startsWith('/')) {
+    href = `/${href}`;
+  }
+
+  return (internal
+    ? <LinkStyle to={href} {...linkProps} />
+    : <AnchorStyle href={href} {...linkProps} />
+  );
 }
 
 
-type LinkStyleProps = {
+type LinkStyleProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   inherit?: boolean;
 }
 const SharedStyle = css<LinkStyleProps>`
   ${(p: LinkStyleProps) => p.inherit && linkColor('inherit')};
 `;
-const AnchorStyle = styled.a`
+const AnchorStyle = styled(({ inherit, ...rest }) => <a {...rest} />)`
   ${SharedStyle}
 `;
-const LinkStyle = styled(Link)`
+const LinkStyle = styled(({ inherit, ...rest }) => <Link {...rest} />)`
   ${SharedStyle}
 `;

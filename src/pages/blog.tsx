@@ -7,7 +7,6 @@ import Utils from '../classes/Utils';
 import BlogPost, { BlogPostData } from '../components/BlogPost';
 
 const BlogPage = ({ data }) => {
-  console.log(data);
   const postCount = data.allMdx.totalCount;
   const posts: BlogPostData[] = data.allMdx.edges.map(edge => edge.node);
   const months: string[] = [];
