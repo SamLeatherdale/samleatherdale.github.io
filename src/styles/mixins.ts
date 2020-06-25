@@ -8,18 +8,25 @@ export function linkColor(color: string) {
   `;
 }
 
-export function spaceChildren(horizontal: string, vertical = '0px') {
-  if (!horizontal) {
-    horizontal = '0';
+export const spaceX = (space: string) => css`
+  > * + * { 
+    margin-left: ${space}; 
   }
-  return css`
-    > * {
-      + * {
-        margin: ${vertical} ${horizontal}
-      }
-    }
-  `;
-}
+`;
+export const spaceY = (space: string) => css` 
+  > * + * { 
+    margin-top: ${space};
+  }
+`;
+export const spaceXY = (x: string, y = '0') => css`
+  ${spaceX(x)};
+  ${spaceY(y)};
+`;
+export const spaceBoth = (space: string) => css`
+  ${spaceX(space)};
+  ${spaceY(space)};
+`;
+
 export function clearfix() {
   return css`
     &:after {

@@ -2,6 +2,7 @@
 @import "../../node_modules/bootstrap/scss/variables";
 @import "../../node_modules/bootstrap/scss/mixins";
 @import "../../node_modules/bootstrap/scss/reboot";
+@import "../../node_modules/bootstrap/scss/type";
 
 @import "variables";
 
@@ -9,6 +10,5 @@
 @import "header";
 @import "footer";
 
-@import "page-home";
 @import "page-about";
 @import "blog";

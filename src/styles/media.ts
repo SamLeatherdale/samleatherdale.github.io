@@ -13,22 +13,32 @@ type SizeType<T> = {
 const sizes: SizeType<number> = {
   mobileS: 320,
   mobileM: 375,
-  mobileL: 425,
+  mobileL: 450,
   tablet: 768,
   laptop: 1024,
   laptopM: 1200,
   laptopL: 1440,
   desktop: 2560
 };
-const min = mapValues(sizes, size => `min-width: ${size}px`);
-const max = mapValues(sizes, size => `max-width: ${size - 1}px`);
+
+export const createMinWidth = (size: number) => `min-width: ${size}px`;
+export const createMaxWidth = (size: number) => `max-width: ${size - 1}px`;
+export const createMinMaxWidth = (size: number) => ({
+  min: createMinWidth(size),
+  max: createMaxWidth(size)
+});
+
+const min = mapValues(sizes, createMinWidth);
+const max = mapValues(sizes, createMaxWidth);
 
 export type MediaType = {
   min: SizeType<string>;
   max: SizeType<string>;
+  sizes: SizeType<number>;
 };
 const media: MediaType = {
   min,
-  max
+  max,
+  sizes
 };
 export default media;
