@@ -36,6 +36,7 @@ export default Footer;
 const Root = styled.footer`
   display: grid;
   grid-template-columns: repeat(3, auto);
+  grid-gap: 24px;
   align-items: center;
   justify-content: center;
   background-color: #333;
@@ -43,12 +44,9 @@ const Root = styled.footer`
   padding: 20px 0;
   text-align: center;
   
-  @media (${media.min.tablet}) {
-    grid-gap: 24px;
-  }
-  
   @media (${media.max.tablet}) {
-    flex-direction: column;
+    grid-template-columns: auto;
+    grid-gap: 16px;
   }
 `;
 const SocialList = styled(UList)`
